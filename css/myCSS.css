@@ -2,3 +2,15 @@
 
     text-align:center;
 }
+
+li {
+    list-style-type: none; /* Убираем маркеры */
+}
+ul li:hover {
+    color:red;
+    cursor: pointer;
+}
+
+.trainInfo{
+    display: none;
+}

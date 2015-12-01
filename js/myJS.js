@@ -1,8 +1,11 @@
 
-
+var fromCheck;
+var tillCheck;
 
 
     function from() {
+        fromCheck = false;
+        $("#findFrom").css("color",'black')
         var xhr = new XMLHttpRequest();
         var findFrom = document.getElementById("findFrom").value;
 
@@ -31,6 +34,10 @@
                         var li = document.createElement("li");
                         li.appendChild(document.createTextNode(a.value[i].title));
                         ul.appendChild(li);
+                        $(li).click(function(){
+                            $("#findFrom").css("color",'green');
+                            fromCheck=true;
+                        });
                     }
 
 
@@ -57,6 +64,8 @@
     }
 
     function till() {
+        $("#findTill").css("color",'black');
+        tillCheck=false;
         var xhr = new XMLHttpRequest();
         var findTill = document.getElementById("findTill").value;
         console.log(findTill);
@@ -84,15 +93,19 @@
                         var li = document.createElement("li");
                         li.appendChild(document.createTextNode(a.value[i].title));
                         ul.appendChild(li);
-                        li.onclick()
-                    }
 
+
+                       $(li).click(function(){
+                           $("#findTill").css("color",'green');
+                           tillCheck = true;
+                       });
+
+                    }
                     $("ul.all li").click(function(){
                         console.log($(this).text());
                         $("#findTill").val($(this).text());
                         $(".autosuggestTill").hide();
                     });
-
 
                 }else  $(".autosuggestTill").empty();
             }
@@ -101,7 +114,11 @@
         xhr.send();
     }
 
+
+
+
     var a = 0;
+
     function showtraininfo() {
         if (a == 0) {
             $('.trainInfo').slideDown(3000);

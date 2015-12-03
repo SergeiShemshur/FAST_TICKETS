@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
 
 <head>
 
@@ -28,16 +28,14 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
 
 </head>
 
-<body id="page-top" ng-App>
+<body id="page-top">
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -90,7 +88,7 @@
                   </tr>
               </table>-->
             <div class="col-xs-4 col-sm-4 col-xs-4 max-center">
-                <input type="text" ng-model="from" class="form-control" id="findFrom" onkeyup="from()">
+                <input type="text" class="form-control" id="findFrom" onkeyup="from()">
                 <ul id="from" class="autosuggest all">
                 </ul>
             </div>
@@ -101,7 +99,7 @@
                 </ul>
             </div>
 
-            <a href="#about" class="btn btn-primary btn-xl page-scroll"   onclick="showtraininfo()">Find Out More</a>
+            <a href="#about" class="btn btn-primary btn-xl page-scroll" onclick="showtraininfo()">Find Out More</a>
         </div>
 
     </div>
@@ -136,8 +134,8 @@
 
                             <div></div>
                         </td>
-                        <td class="">
-                            {{from}}<br>
+                        <td class="directions">
+                            {{fromS}}<br>
                             Одесса-Главная
 
                         </td>
@@ -158,7 +156,6 @@
                             </div>
 
 
-
                         </td>
                     </tr>
                     <tr class="vToolsDataTableRow2">
@@ -166,7 +163,7 @@
 
                             <div></div>
                         </td>
-                        <td class="">
+                        <td class="directions">
                             Киев-Пассажирский<br>
                             Одесса-Главная
 
@@ -189,7 +186,6 @@
                             </div>
 
 
-
                         </td>
                     </tr>
                     <tr class="vToolsDataTableRow2">
@@ -197,7 +193,7 @@
 
                             <div></div>
                         </td>
-                        <td class="">
+                        <td class="directions">
                             Киев-Пассажирский<br>
                             Одесса-Главная
 
@@ -218,7 +214,6 @@
                                 <button>Выбрать</button>
 
                             </div>
-
 
 
                         </td>
@@ -233,18 +228,89 @@
 <!--END section for get information about train-->
 <!--start section buy form-->
 
-<section id="services">
+<section id="services" class="buyForm " style="background-color: #5bc0de">
     <div class="container ">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Buy form</h2>
+
+                <table class="table" onchange="alert('work')">
+                    <thead>
+                    <tr>
+                        <th class="text-center">№ <br>train</th>
+                        <th class="text-center">place</th>
+                        <th class="text-center">name</th>
+                        <th class="text-center">last name</th>
+                        <th class="text-center">options</th>
+                        <th class="text-center">services</th>
+                        <th class="text-center">price</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr class="text-center">
+                        <td class="text-center">
+                            <select ng-model="train">
+                                <option value="1">1</option>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="9">9</option>
+                            </select>
+                        </td>
+                        <td class="text-center">
+                            <select ng-model="place">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="7">7</option>
+                                <option value="10">10</option>
+                                <option value="13">13</option>
+                                <option value="17">17</option>
+                                <option value="21">21</option>
+                            </select>
+                        </td>
+                        <td><input type="text" ng-model="name"></td>
+                        <td><input type="text" ng-model="lastName"></td>
+                        <td>
+                            <div>
+                                <label for="plan">Full</label>
+                                <input id="plan" type="radio" name="content" ng-model="content" value="plan">
+                                <br/>
+
+                                <label for="first">Student</label>
+                                <input id="first" type="radio" name="content" ng-model="content" value="student">
+                                <br/>
+
+                                <p ng-show="content == 'student'">
+
+                                    <input type="text" maxlength="8" size="9" ng-model="studentNumber">
+                                    <img src="img/question.png" title="Input number of student ticket">
+                                </p>
+                                <label for="other">Children</label>
+                                <input id="other" type="radio" name="content" ng-model="content" value="children">
+                                <p ng-show="content == 'children'">
+                                    <input type="text" maxlength="2" size="5" ng-model="childrenAge">
+                                    <img src="img/question.png" title="Input age of children"></p>
+                            </div>
+                        </td>
+
+                        <td>
+                            <input type="checkbox">linen<br>
+                            <input type="checkbox">tea<br>
+
+
+                        </td>
+                        <td>fsd</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="btn-primary">Buy</button>
                 <hr class="primary">
             </div>
         </div>
     </div>
+
 </section>
 <!--end section buy form-->
-
 
 
 <section class="no-padding" id="portfolio">
@@ -255,7 +321,7 @@
     </div>
 </section>
 
-<aside class="bg-dark">
+<aside class="bg-dark print">
     <div class="container text-center">
         <div class="call-to-action">
             <h2>information for print</h2>
@@ -291,23 +357,25 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/creative.js"></script>
-<script src="js/angular.min (1).js"></script>
+<script src="js/angular.min.js"></script>
+
 
 <script>
     var a = 0;
     function showtraininfo() {
-        if(tillCheck && fromCheck){
+        if (tillCheck && fromCheck) {
             if (a == 0) {
                 $('.trainInfo').slideDown(3000);
                 a++;
+                $('.directions').html(fromString + '<br>' + tillString);
             } else {
-                $('.trainInfo').slideUp(2000);
+                $('.trainInfo').slideUp(1);
                 $('.trainInfo').slideDown(3000);
+                $('.directions').html(fromString + '<br>' + tillString);
             }
-        }else alert ("Select town from drop list !");
-
-
-
+        } else {
+            alert("Select town from drop list !");
+        }
     }
 
 </script>

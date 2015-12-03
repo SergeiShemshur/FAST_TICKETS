@@ -1,6 +1,8 @@
 
 var fromCheck;
 var tillCheck;
+var fromString;
+var tillString;
 
 
     function from() {
@@ -37,6 +39,7 @@ var tillCheck;
                         $(li).click(function(){
                             $("#findFrom").css("color",'green');
                             fromCheck=true;
+                            fromString = $(this).text();
                         });
                     }
 
@@ -98,6 +101,7 @@ var tillCheck;
                        $(li).click(function(){
                            $("#findTill").css("color",'green');
                            tillCheck = true;
+                           tillString = $(this).text();
                        });
 
                     }
